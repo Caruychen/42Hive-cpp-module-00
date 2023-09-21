@@ -18,6 +18,6 @@ int main(void)
     if (std::cin.eof())
       break;
   }
-
-  return 0;
+  std::cout << "Goodbye!" << std::endl;
+  return (0);
 }
