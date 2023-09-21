@@ -16,11 +16,11 @@ Contact *PhoneBook::_getContact(int index)
   return (&this->_contacts[index % MAX_CONTACTS]);
 }
 
-std::string    PhoneBook::_readInput(std::string prompt) const
+std::string PhoneBook::_readInput(std::string prompt) const
 {
   std::string input;
 
-  while (!std::cin.eof() && input == "")
+  while (!std::cin.eof())
   {
     std::cout << prompt;
     if (std::getline(std::cin, input) && input != "")
@@ -30,21 +30,23 @@ std::string    PhoneBook::_readInput(std::string prompt) const
 }
 
 void PhoneBook::add(void) {
-  std::string input;
   int         index;
   Contact     *contact;
+  std::string input;
 
   index = this->_contactCount;
   contact = this->_getContact(index);
   if (index >= MAX_CONTACTS)
     std::cout \
       << "Warning: Overwriting contact info about " \
-      << this->_getContact(index)->getFirstName();
+      << contact->getFirstName() \
+      << std::endl;
   contact->setFirstName(this->_readInput("Enter first name: "));
   contact->setLastName(this->_readInput("Enter last name: "));
   contact->setNickName(this->_readInput("Enter nick name: "));
   contact->setPhoneNumber(this->_readInput("Enter phone number: "));
-  contact->setDarkestSecret(this->_readInput("Enter darkest secred: "));
+  contact->setDarkestSecret(this->_readInput("Enter darkest secret: "));
+  this->_contactCount++;
 }
 
 void PhoneBook::search(void) {
