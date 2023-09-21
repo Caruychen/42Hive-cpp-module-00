@@ -4,10 +4,20 @@
 
 int main(void)
 {
-  PhoneBook phonebook;
+  PhoneBook   phonebook;
+  std::string command;
 
-  phonebook.addContact();
-  phonebook.searchContact();
+  while (command != "EXIT")
+  {
+    std::cout << "Enter a command: ";
+    std::getline(std::cin, command);
+    if (command == "ADD")
+      phonebook.add();
+    if (command == "SEARCH")
+      phonebook.search();
+    if (std::cin.eof())
+      break;
+  }
 
   return 0;
 }
