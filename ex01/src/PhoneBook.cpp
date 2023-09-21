@@ -11,10 +11,10 @@ PhoneBook::~PhoneBook(void) {
   return;
 }
 
-void PhoneBook::addContact(void) {
+void PhoneBook::add(void) {
   std::cout << "addContact called." << std::endl;
 }
 
-void PhoneBook::searchContact(void) {
+void PhoneBook::search(void) {
   std::cout << "searchContact called." << std::endl;
 }
