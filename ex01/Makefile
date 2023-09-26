@@ -6,7 +6,7 @@ INCLUDES := -I./includes
 
 SRC_DIR := ./src
 OBJ_DIR := ./obj
-SRCS := main.cpp PhoneBook.cpp Contact.cpp
+SRCS := main.cpp PhoneBook.cpp Contact.cpp List.cpp
 OBJS := $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 .PHONY: all clean fclean re

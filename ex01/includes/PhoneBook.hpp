@@ -4,12 +4,14 @@
 # define MAX_CONTACTS 8
 # include "Contact.hpp"
 
-class PhoneBook {
+class PhoneBook
+{
   private:
     Contact     _contacts[MAX_CONTACTS];
     int         _contactCount;
     Contact     *_getContact(int index);
     std::string _readInput(std::string prompt) const;
+    void        _displayTable(void) const;
 
   public:
     PhoneBook(void);

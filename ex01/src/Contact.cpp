@@ -2,13 +2,9 @@
 #include "Contact.hpp"
 
 Contact::Contact(void) {
-  std::cout << "Contact created." << std::endl;
-  return;
 }
 
 Contact::~Contact(void) {
-  std::cout << "Contact destroyed." << std::endl;
-  return;
 }
 
 std::string Contact::getFirstName(void) const
@@ -59,4 +55,18 @@ void Contact::setPhoneNumber(std::string phoneNumber)
 void Contact::setDarkestSecret(std::string darkestSecret)
 {
   this->_darkestSecret = darkestSecret;
+}
+
+void Contact::print(void) const
+{
+  if (this->getFirstName().empty())
+  {
+    std::cout << "No contact found." << std::endl;
+    return ;
+  }
+  std::cout << "First Name: " << this->getFirstName() << std::endl;
+  std::cout << "Last Name: " << this->getLastName() << std::endl;
+  std::cout << "Nick Name: " << this->getNickName() << std::endl;
+  std::cout << "Phone Number: " << this->getPhoneNumber() << std::endl;
+  std::cout << "Darkest Secret: " << this->getDarkestSecret() << std::endl;
 }

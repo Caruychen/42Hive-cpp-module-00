@@ -1,14 +1,13 @@
 #include <iostream>
+#include <iomanip>
 #include "PhoneBook.hpp"
+#include "List.hpp"
 
 PhoneBook::PhoneBook(void) {
   this->_contactCount = 0;
-  std::cout << "PhoneBook created." << std::endl;
 }
 
 PhoneBook::~PhoneBook(void) {
-  std::cout << "PhoneBook destroyed." << std::endl;
-  return;
 }
 
 Contact *PhoneBook::_getContact(int index)
@@ -27,6 +26,31 @@ std::string PhoneBook::_readInput(std::string prompt) const
       break;
   }
   return (input);
+}
+
+void PhoneBook::_displayTable(void) const
+{
+  List  list;
+  Contact contact;
+  int   index;
+  int   total;
+
+  index = 0;
+  total = std::min(this->_contactCount, MAX_CONTACTS);
+  list.printHeaderRow();
+  while (index < total)
+  {
+    contact = this->_contacts[index % MAX_CONTACTS];
+    list.printRow(
+        std::to_string(index),
+        contact.getFirstName(),
+        contact.getLastName(),
+        contact.getNickName(),
+        index >= (total - 1)
+        );
+    index++;
+  }
+
 }
 
 void PhoneBook::add(void) {
@@ -50,9 +74,21 @@ void PhoneBook::add(void) {
 }
 
 void PhoneBook::search(void) {
-  Contact contact;
-  std::cout << "searchContact called." << std::endl;
+  std::string input;
+  int         index;
 
-  contact = *this->_getContact(0);
-  std::cout << contact.getFirstName() << std::endl;
+  if (this->_contactCount <= 0)
+  {
+    std::cout << "Phonebook empty!" << std::endl;
+    return;
+  }
+  this->_displayTable();
+  input = this->_readInput("Enter an index to search: ");
+  index = input[0] - '0';
+  if (input.size() != 1 || index < 0 || index >= MAX_CONTACTS)
+  {
+    std::cout << "Error: Invalid index!" << std::endl;
+    return ;
+  }
+  this->_contacts[index].print();
 }

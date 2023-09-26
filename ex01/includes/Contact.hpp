@@ -1,7 +1,8 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-class Contact {
+class Contact
+{
   private:
     std::string _firstName;
     std::string _lastName;
@@ -22,6 +23,7 @@ class Contact {
     void        setNickName(std::string nickName);
     void        setPhoneNumber(std::string phoneNumber);
     void        setDarkestSecret(std::string darkestSecret);
+    void        print(void) const;
 };
 
 #endif
