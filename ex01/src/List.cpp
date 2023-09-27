@@ -1,6 +1,6 @@
-#include "List.hpp"
 #include <iostream>
 #include <iomanip>
+#include "List.hpp"
 
 List::List(void)
 {
