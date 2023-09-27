@@ -3,6 +3,10 @@
 #include <ctime>
 #include "Account.hpp"
 
+// ************************************************************************** //
+// STATIC ******************************************************************* //
+// ************************************************************************** //
+
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
@@ -10,32 +14,32 @@ int Account::_totalNbWithdrawals = 0;
 
 int  Account::getNbAccounts( void )
 {
-  return Account::_nbAccounts;
+  return t::_nbAccounts;
 }
 
 int  Account::getTotalAmount( void )
 {
-  return Account::_totalAmount;
+  return t::_totalAmount;
 }
 
 int Account::getNbDeposits( void )
 {
-  return Account::_totalNbDeposits;
+  return t::_totalNbDeposits;
 }
 
 int Account::getNbWithdrawals( void )
 {
-  return Account::_totalNbWithdrawals;
+  return t::_totalNbWithdrawals;
 }
 
 void Account::displayAccountsInfos( void )
 {
-  Account::_displayTimestamp();
+  t::_displayTimestamp();
   std::cout \
-    << "accounts:" << Account::_nbAccounts \
-    << ";total:" << Account::_totalAmount \
-    << ";deposits:" << Account::_totalNbDeposits \
-    << ";withdrawals:" << Account::_totalNbWithdrawals \
+    << "accounts:" << t::_nbAccounts \
+    << ";total:" << t::_totalAmount \
+    << ";deposits:" << t::_totalNbDeposits \
+    << ";withdrawals:" << t::_totalNbWithdrawals \
     << std::endl;
 }
 
@@ -47,13 +51,17 @@ void Account::_displayTimestamp( void )
   std::cout << std::put_time(std::localtime(&time), "[%Y%m%d_%H%M%S] ");
 }
 
+// ************************************************************************** //
+// PUBLIC ******************************************************************* //
+// ************************************************************************** //
+
 Account::Account( int initial_deposit ): _amount(initial_deposit)
 {
-  Account::_totalAmount += initial_deposit;
-  this->_accountIndex = Account::_nbAccounts++;
+  t::_totalAmount += initial_deposit;
+  this->_accountIndex = t::_nbAccounts++;
   this->_nbDeposits = 0;
   this->_nbWithdrawals = 0;
-  Account::_displayTimestamp();
+  t::_displayTimestamp();
   std::cout \
     << "index:" << this->_accountIndex \
     << ";amount:" << this->checkAmount() \
@@ -62,13 +70,13 @@ Account::Account( int initial_deposit ): _amount(initial_deposit)
 
 Account::~Account( void )
 {
-  Account::_displayTimestamp();
+  t::_displayTimestamp();
   std::cout \
     << "index:" << this->_accountIndex \
     << ";amount:" << this->checkAmount() \
     << ";closed" << std::endl;
-  Account::_nbAccounts--;
-  Account::_totalAmount -= this->checkAmount();
+  t::_nbAccounts--;
+  t::_totalAmount -= this->checkAmount();
 }
 
 void  Account::makeDeposit( int deposit )
@@ -78,9 +86,9 @@ void  Account::makeDeposit( int deposit )
   p_amount = this->checkAmount();
   this->_amount += deposit;
   this->_nbDeposits++;
-  Account::_totalAmount += deposit;
-  Account::_totalNbDeposits++;
-  Account::_displayTimestamp();
+  t::_totalAmount += deposit;
+  t::_totalNbDeposits++;
+  t::_displayTimestamp();
   std::cout \
     << "index:" << this->_accountIndex \
     << ";p_amount:" << p_amount \
@@ -92,7 +100,7 @@ void  Account::makeDeposit( int deposit )
 
 bool  Account::makeWithdrawal( int withdrawal )
 {
-  Account::_displayTimestamp();
+  t::_displayTimestamp();
   std::cout \
     << "index:" << this->_accountIndex \
     << ";p_amount:" << this->checkAmount() \
@@ -104,8 +112,8 @@ bool  Account::makeWithdrawal( int withdrawal )
   }
   this->_amount -= withdrawal;
   this->_nbWithdrawals++;
-  Account::_totalAmount -= withdrawal;
-  Account::_totalNbWithdrawals++;
+  t::_totalAmount -= withdrawal;
+  t::_totalNbWithdrawals++;
   std::cout \
     << withdrawal \
     << ";amount:" << this->checkAmount() \
@@ -121,7 +129,7 @@ int  Account::checkAmount( void ) const
 
 void  Account::displayStatus( void ) const
 {
-  Account::_displayTimestamp();
+  t::_displayTimestamp();
   std::cout \
     << "index:" << this->_accountIndex \
     << ";amount:" << this->checkAmount() \
