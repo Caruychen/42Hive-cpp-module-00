@@ -3,11 +3,13 @@
 #include "PhoneBook.hpp"
 #include "List.hpp"
 
-PhoneBook::PhoneBook(void) {
+PhoneBook::PhoneBook(void)
+{
   this->_contactCount = 0;
 }
 
-PhoneBook::~PhoneBook(void) {
+PhoneBook::~PhoneBook(void)
+{
 }
 
 Contact *PhoneBook::_getContact(int index)
@@ -53,7 +55,8 @@ void PhoneBook::_displayTable(void) const
 
 }
 
-void PhoneBook::add(void) {
+void PhoneBook::add(void)
+{
   int         index;
   Contact     *contact;
   std::string input;
@@ -73,7 +76,8 @@ void PhoneBook::add(void) {
   this->_contactCount++;
 }
 
-void PhoneBook::search(void) {
+void PhoneBook::search(void)
+{
   std::string input;
   int         index;
 
