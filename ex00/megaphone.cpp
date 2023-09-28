@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cchen <cchen@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 14:49:42 by cchen             #+#    #+#             */
+/*   Updated: 2023/09/28 14:50:45 by cchen            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
 int main(int argc, char **argv)
 {
-  int index_arg;
-  int index_char;
+  int	index_arg;
+  int	index_char;
 
   if (argc < 2)
   {

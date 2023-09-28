@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cchen <cchen@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 14:56:26 by cchen             #+#    #+#             */
+/*   Updated: 2023/09/28 14:56:32 by cchen            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int main(void)
+int	main(void)
 {
   PhoneBook   phonebook;
   std::string command;

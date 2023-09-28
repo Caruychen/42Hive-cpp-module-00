@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cchen <cchen@student.hive.fi>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 14:55:59 by cchen             #+#    #+#             */
+/*   Updated: 2023/09/28 14:56:24 by cchen            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "PhoneBook.hpp"
 #include "List.hpp"
@@ -11,12 +23,12 @@ PhoneBook::~PhoneBook(void)
 {
 }
 
-Contact *PhoneBook::_getContact(int index)
+Contact		*PhoneBook::_getContact(int index)
 {
   return (&this->_contacts[index % MAX_CONTACTS]);
 }
 
-std::string PhoneBook::_readInput(std::string prompt) const
+std::string	PhoneBook::_readInput(std::string prompt) const
 {
   std::string input;
 
@@ -29,7 +41,7 @@ std::string PhoneBook::_readInput(std::string prompt) const
   return (input);
 }
 
-void PhoneBook::_displayTable(void) const
+void		PhoneBook::_displayTable(void) const
 {
   List  list;
   Contact contact;
@@ -54,7 +66,7 @@ void PhoneBook::_displayTable(void) const
 
 }
 
-void PhoneBook::add(void)
+void		PhoneBook::add(void)
 {
   int         index;
   Contact     *contact;
@@ -75,7 +87,7 @@ void PhoneBook::add(void)
   this->_contactCount++;
 }
 
-void PhoneBook::search(void)
+void		PhoneBook::search(void)
 {
   std::string input;
   int         index;
